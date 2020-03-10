@@ -15,5 +15,6 @@ namespace STORECASE.Data
             
         }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Case> Case { get; set; }
     }
 }

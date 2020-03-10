@@ -1,0 +1,69 @@
+﻿@model IEnumerable<STORECASE.Models.Case>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Список доступных товаров</h1>
+
+    <p>
+        <a class="btn" asp-action="Create">Создать новый товар</a>
+    </p>
+    <table class="tbl">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    Изменение
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Description)
+                    </td>
+                    <td>
+                        <a class="btn" asp-action="Details" asp-route-id="@item.Id">Просмотр</a> |
+                        <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                        <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
